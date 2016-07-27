@@ -17,7 +17,7 @@ class ReposDataStore {
         GithubAPIClient.getRepositoriesWithCompletion { (inputRepoArray) in
             self.repoArray.removeAll()
             for repo in inputRepoArray {
-                guard let repoDictionary = repo as? [String : String] else {return}
+                guard let repoDictionary = repo as? NSDictionary else {return}
                 self.repoArray.append(GithubRepository.init(dictionary: repoDictionary))
             }
             print ("about to call completion within call to GithubAPIClient: \(self.repoArray.count)")

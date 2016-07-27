@@ -19,7 +19,10 @@ class ReposTableViewController: UITableViewController {
             NSOperationQueue.mainQueue().addOperationWithBlock({ 
                 print("Bloop")
             })
-            self.tableView.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.tableView.reloadData()
+            }
         }
         
         self.tableView.accessibilityLabel = "tableView"
